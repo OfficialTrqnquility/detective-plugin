@@ -1,2 +1,2 @@
-# detective-plugin
-Plugin to extract data from Minecraft for Detective
+# detective
+Pytorch model for cheat detection.
