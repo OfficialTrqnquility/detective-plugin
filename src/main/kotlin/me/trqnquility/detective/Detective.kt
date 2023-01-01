@@ -28,8 +28,10 @@ class Detective: JavaPlugin() {
         Bukkit.getPluginManager().registerEvents(MovementListener(movementHistory), this)
 
         Bukkit.getScheduler().runTaskTimer( this, { -> Bukkit.getOnlinePlayers().forEach {
-            movementHistory.save(it.uniqueId)
-            println("saved")
+            if (movementHistory.get(it.uniqueId).isNotEmpty()) {
+                movementHistory.save(it.uniqueId)
+                println("saved ${it.player?.name}")
+            }
         } }, 1L, this.config.getInt("save-interval").toLong())
 
     }
